@@ -488,6 +488,8 @@ export -f log
 echo "==============================================" >> "$LOG_FILE"
 log "Starting archiveloop at $(awk '{print $1}' /proc/uptime) seconds uptime..."
 
+/root/bin/send-push-message "$TESLAUSB_HOSTNAME:" "Starting archiveloop..."
+
 if [ "${SNAPSHOTS_ENABLED:-true}" = "true" ]
 then
   /root/bin/make_snapshot.sh
