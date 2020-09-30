@@ -110,11 +110,13 @@ function wait_for_archive_to_be_reachable () {
     if archive_is_reachable
     then
       log "Archive is reachable."
+      /root/bin/send-push-message "$TESLAUSB_HOSTNAME:" "Archive is reachable."
       break
     fi
     if [ -e /tmp/archive_is_reachable ]
     then
       log "Simulating archive is reachable"
+      /root/bin/send-push-message "$TESLAUSB_HOSTNAME:" "Simulating archive is reachable..."
       rm /tmp/archive_is_reachable
       break
     fi
